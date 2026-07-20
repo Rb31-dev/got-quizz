@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Estilização avançada para garantir o fundo branco, bordas nítidas e menu visível
+# Estilização avançada para garantir o fundo branco, texto escuro de alto contraste, e campo de entrada claro
 st.markdown("""
 <style>
     /* Força o fundo da tela inteiro a ser branco puro */
@@ -28,6 +28,11 @@ st.markdown("""
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
     
+    /* FORÇAR TEXTOS E TÍTULOS DO STREAMLIT A SEREM ESCUROS (Corrige o bug da imagem) */
+    .stApp h1, .stApp h2, .stApp h3, .stApp p, .stApp span, .stApp li, .stApp div {
+        color: #1e293b;
+    }
+    
     /* Estilo do cabeçalho azul com menu de navegação estético */
     .header-container {
         background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -41,11 +46,15 @@ st.markdown("""
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
+    /* Garante que o texto de dentro do cabeçalho azul continue sempre branco */
+    .header-container * {
+        color: #ffffff !important;
+    }
+    
     .header-logo {
         font-size: 24px;
         font-weight: 800;
         letter-spacing: 1px;
-        color: #ffffff !important;
     }
     
     .header-menu {
@@ -56,7 +65,6 @@ st.markdown("""
     
     /* Menu com visibilidade máxima (branco puro e negrito) */
     .menu-item {
-        color: #ffffff !important;
         text-decoration: none;
         font-weight: 700 !important;
         font-size: 15px;
@@ -78,7 +86,38 @@ st.markdown("""
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    /* Classes CSS para as células da grade com divisórias nítidas (#b0b0b0) */
+    /* FORÇAR A CAIXA DE TEXTO A SER CLARA E COM BORDAS DEFINIDAS (Corrige caixa preta da imagem) */
+    div[data-testid="stTextInput"] input {
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+        border: 2px solid #b0b0b0 !important;
+        border-radius: 6px !important;
+        padding: 10px !important;
+    }
+    
+    div[data-testid="stTextInput"] input::placeholder {
+        color: #64748b !important;
+    }
+    
+    div[data-testid="stTextInput"] label p {
+        color: #1e293b !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+    }
+
+    /* Ajuste de contraste para o widget de progresso (st.metric) */
+    div[data-testid="stMetricValue"] > div {
+        color: #0f172a !important;
+        font-weight: 800 !important;
+        font-size: 32px !important;
+    }
+    div[data-testid="stMetricLabel"] > div > p {
+        color: #475569 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+    }
+
+    /* Classes CSS para as células da grade com divisórias bem nítidas (#b0b0b0) */
     .grid-cell {
         border-left: 1px solid #b0b0b0 !important;
         border-right: 1px solid #b0b0b0 !important;
@@ -90,19 +129,19 @@ st.markdown("""
     }
 
     .grid-cell-empty {
-        color: #d0d0d0;
-        background-color: #fbfbfb;
+        color: #d0d0d0 !important;
+        background-color: #fbfbfb !important;
     }
 
     .grid-cell-found {
-        background-color: #e6f4ea;
-        color: #137333;
-        font-weight: bold;
+        background-color: #e6f4ea !important;
+        color: #137333 !important;
+        font-weight: bold !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Renderizando o cabeçalho estético com menu visível
+# Renderizando o cabeçalho estético com menu visível e protegido contra Dark Mode
 st.markdown("""
 <div class="header-container">
     <div class="header-logo">🛡️ PORTAL QUIZ</div>
@@ -115,8 +154,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.title("⚔️ Quiz de Personagens: Universo de Game of Thrones")
-st.write("Digite o nome dos personagens mais marcantes de GoT e House of the Dragon!")
+# Título principal com tags HTML para garantir a cor escura
+st.markdown("<h1 style='color: #1e293b; margin-bottom: 5px;'>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>", unsafe_allow_html=True)
+st.markdown("<p style='color: #475569; font-size: 16px; margin-bottom: 25px;'>Digite o nome dos personagens mais marcantes de GoT e House of the Dragon!</p>", unsafe_allow_html=True)
 
 gabarito = {
     "Casa Stark & Norte": [
