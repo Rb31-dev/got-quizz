@@ -35,7 +35,7 @@ if resposta_usuario:
             st.session_state.acertos.append(resposta_usuario)
             st.success(f"Boa! Você acertou um!")
             # Recarrega a página para limpar o campo de texto automaticamente
-            st.rerender()
+            st.experimental_rerun()
         else:
             st.warning("Você já acertou esse!")
     else:
