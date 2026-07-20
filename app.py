@@ -8,13 +8,19 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Estilização personalizada para garantir fundo limpo, fontes modernas e o cabeçalho azul premium
+# Estilização avançada para garantir o fundo branco, bordas nítidas e menu visível
 st.markdown("""
 <style>
+    /* Força o fundo da tela inteiro a ser branco puro */
+    .stApp {
+        background-color: #ffffff !important;
+    }
+
     /* Reset de margens superiores padrões do Streamlit para o cabeçalho colar no topo */
     .block-container {
         padding-top: 0rem !important;
         padding-bottom: 2rem !important;
+        background-color: #ffffff !important;
     }
     
     /* Configuração de fontes globais */
@@ -39,6 +45,7 @@ st.markdown("""
         font-size: 24px;
         font-weight: 800;
         letter-spacing: 1px;
+        color: #ffffff !important;
     }
     
     .header-menu {
@@ -47,17 +54,19 @@ st.markdown("""
         align-items: center;
     }
     
+    /* Menu com visibilidade máxima (branco puro e negrito) */
     .menu-item {
-        color: rgba(255, 255, 255, 0.85);
+        color: #ffffff !important;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 700 !important;
         font-size: 15px;
         transition: color 0.2s;
         cursor: pointer;
     }
     
+    /* Efeito ao passar o mouse por cima do menu */
     .menu-item:hover {
-        color: #ffffff;
+        color: #ffd700 !important;
     }
     
     .login-btn {
@@ -65,12 +74,35 @@ st.markdown("""
         color: #1e3c72 !important;
         padding: 6px 16px;
         border-radius: 20px;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Classes CSS para as células da grade com divisórias nítidas (#b0b0b0) */
+    .grid-cell {
+        border-left: 1px solid #b0b0b0 !important;
+        border-right: 1px solid #b0b0b0 !important;
+        border-bottom: 1px solid #b0b0b0 !important;
+        padding: 10px 8px;
+        font-size: 13px;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .grid-cell-empty {
+        color: #d0d0d0;
+        background-color: #fbfbfb;
+    }
+
+    .grid-cell-found {
+        background-color: #e6f4ea;
+        color: #137333;
+        font-weight: bold;
     }
 </style>
 """, unsafe_allow_html=True)
 
+# Renderizando o cabeçalho estético com menu visível
 st.markdown("""
 <div class="header-container">
     <div class="header-logo">🛡️ PORTAL QUIZ</div>
@@ -86,7 +118,6 @@ st.markdown("""
 st.title("⚔️ Quiz de Personagens: Universo de Game of Thrones")
 st.write("Digite o nome dos personagens mais marcantes de GoT e House of the Dragon!")
 
-# O banco de dados foi expandido com os nomes principais e secundários relevantes, separados em 5 colunas temáticas
 gabarito = {
     "Casa Stark & Norte": [
         "jon snow", "arya stark", "sansa stark", "bran stark", "ned stark", 
@@ -125,19 +156,17 @@ for lista in gabarito.values():
 
 if "acertos" not in st.session_state:
     st.session_state.acertos = []
-if "limpar_input" not in st.session_state:
-    st.session_state.limpar_input = 0
 
-# Função de validação sem comandos que travam o Streamlit Cloud
 def checar_resposta():
-    # .lower() remove distinção de maiúsculas e .strip() remove espaços extras
+    # Coleta a resposta digitada
     resposta = st.session_state.campo_texto.lower().strip()
     if resposta:
+        # Se for um personagem válido e não repetido, adiciona na lista de acertos
         if resposta in todos_personagens:
             if resposta not in st.session_state.acertos:
                 st.session_state.acertos.append(resposta)
-        # Força o campo de texto a limpar seu valor interno
-        st.session_state.limpar_input += 1
+        # LIMPA O INPUT AUTOMATICAMENTE apagar o texto digitado na sessão atual
+        st.session_state.campo_texto = ""
 
 st.text_input(
     "Digite o nome de um personagem:", 
@@ -160,31 +189,32 @@ colunas_interface = st.columns(len(gabarito))
 # Loop por todas as colunas do gabarito para desenhar as caixas
 for i, (casa, personagens) in enumerate(gabarito.items()):
     with colunas_interface[i]:
-        # Cabeçalho azul individual de cada coluna com cantos arredondados
+        # Cabeçalho azul individual de cada coluna com cantos arredondados e borda lateral
         st.markdown(
-            f"<div style='background-color:#2a5298; color:white; padding:12px; text-align:center; font-weight:bold; font-size:14px; border-radius:5px 5px 0px 0px; min-height: 45px; display: flex; align-items: center; justify-content: center;'>{casa}</div>", 
+            f"<div style='background-color:#2a5298; color:white; padding:12px; text-align:center; font-weight:bold; font-size:14px; border-radius:5px 5px 0px 0px; min-height: 45px; display: flex; align-items: center; justify-content: center; border: 1px solid #2a5298;'>{casa}</div>", 
             unsafe_allow_html=True
         )
         
         # Renderizando cada item daquela coluna
         for p in personagens:
             if p in st.session_state.acertos:
-                # Estilo moderno para itens descobertos (verde pastel suave com texto em verde escuro)
+                # Caixa com o personagem descoberto (verde com borda nítida de cor #b0b0b0)
                 st.markdown(
-                    f"<div style='border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 8px; background-color: #e6f4ea; color: #137333; font-weight: bold; font-size: 13px; text-align:center;'>{p.title()}</div>", 
+                    f"<div class='grid-cell grid-cell-found'>{p.title()}</div>", 
                     unsafe_allow_html=True
                 )
             else:
-                # Estilo para itens vazios (linhas pontilhadas/suaves, parecidas com gabarito em branco)
+                # Caixa vazia (linhas de segredo com borda nítida de cor #b0b0b0)
                 st.markdown(
-                    "<div style='border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 8px; color: #d0d0d0; background-color: #fafafa; font-size: 13px; text-align:center;'>---</div>", 
+                    "<div class='grid-cell grid-cell-empty'>---</div>", 
                     unsafe_allow_html=True
                 )
 
 st.write(" ")
 st.write(" ")
 
+# Botão para resetar o jogo de forma limpa
 if st.button("🔄 Reiniciar e Zerar Quiz"):
     st.session_state.acertos = []
-    st.session_state.limpar_input += 1
+    st.session_state.campo_texto = ""
     st.rerender() if hasattr(st, "rerender") else st.experimental_rerun()
