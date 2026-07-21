@@ -269,7 +269,7 @@ html_code = """
 
     <div class="main-content">
         <h1>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>
-        <p class="subtitle">Você conhece todos os personagens do universo de GOT?!</p>
+        <p class="subtitle">Você conhece todos os personagens do universo de GOT?</p>
 
         <!-- Input com escuta instantânea -->
         <div class="input-group">
