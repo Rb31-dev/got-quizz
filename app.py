@@ -9,6 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Estilização global do Streamlit
 st.markdown("""
 <style>
     /* Ocultar elementos padrão do Streamlit */
@@ -47,10 +48,10 @@ html_code = """
             padding-bottom: 40px;
         }
 
-        /* Cabeçalho superior azul com menu */
+        /* Header superior estilo Lovewen'S */
         .header-container {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 16px 30px;
+            padding: 14px 30px;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -65,7 +66,15 @@ html_code = """
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .header-logo img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffd700;
         }
 
         .header-menu {
@@ -96,7 +105,7 @@ html_code = """
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Conteúdo central */
+        /* Conteúdo principal */
         .main-content {
             max-width: 1300px;
             margin: 0 auto;
@@ -116,7 +125,7 @@ html_code = """
             margin-bottom: 20px;
         }
 
-        /* Caixa de busca / input */
+        /* Input de busca estilo quiz */
         .input-group {
             margin-bottom: 20px;
         }
@@ -171,7 +180,7 @@ html_code = """
             color: #1e3c72;
         }
 
-        /* Grade de colunas */
+        /* Layout em grade */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -210,11 +219,11 @@ html_code = """
             justify-content: center;
         }
 
-        /* Células da tabela com bordas nítidas */
+        /* Células das colunas */
         .cell {
-            border-left: 1px solid #b0b0b0;
-            border-right: 1px solid #b0b0b0;
-            border-bottom: 1px solid #b0b0b0;
+            border-left: 1px solid #cbd5e1;
+            border-right: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
             padding: 9px 6px;
             text-align: center;
             font-size: 13px;
@@ -251,12 +260,10 @@ html_code = """
 </head>
 <body>
 
-    <!-- Header Azul com a sua Imagem e Nome -->
     <div class="header-container">
         <div class="header-logo">
-            <!-- Se você colocar a imagem 'logo.png' no seu repositório no GitHub, ela carregará aqui -->
             <img src="logo.png" alt="Logo Lovewen'S" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline';">
-            <span id="fallback-icon" style="display:none; font-size: 26px;">🎮​</span>
+            <span id="fallback-icon" style="display:none; font-size: 26px;">👑</span>
             <span>Lovewen'S</span>
         </div>
         <div class="header-menu">
@@ -268,28 +275,26 @@ html_code = """
     </div>
 
     <div class="main-content">
-        <h1>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>
-        <p class="subtitle">Você conhece todos os personagens do universo de GOT?</p>
+        <h1>⚔️ Quiz de Personagens & Casas: Universo Game of Thrones</h1>
+        <p class="subtitle">Digite o nome dos personagens ou das Casas Nobres (validação automática sem apertar Enter)!</p>
 
-        <!-- Input com escuta instantânea -->
         <div class="input-group">
-            <label class="input-label" for="quizInput">Digite o nome de um personagem:</label>
+            <label class="input-label" for="quizInput">Digite um nome:</label>
             <input 
                 type="text" 
                 id="quizInput" 
-                class="search-input"  
+                class="search-input" 
+                placeholder="Ex: Jon, Sansa, Tyrion, Dany, Stark, Lannister, Baratheon..." 
                 autocomplete="off"
                 autofocus
             />
         </div>
 
-        <!-- Placar -->
         <div class="score-container">
             <span class="score-title">📊 Seu Progresso Atual</span>
             <span id="scoreText" class="score-number">0 / 80 encontrados</span>
         </div>
 
-        <!-- Grade com os nomes e casas -->
         <div class="grid-container" id="gridContainer"></div>
 
         <button class="reset-btn" onclick="resetGame()">🔄 Reiniciar e Zerar Quiz</button>
@@ -297,7 +302,7 @@ html_code = """
 
     <script>
         const quizData = {
-            "Casa Stark & Norte": [
+            "O norte": [
                 { id: "jon", name: "Jon Snow", aliases: ["jon snow", "jon", "john", "john snow"] },
                 { id: "arya", name: "Arya Stark", aliases: ["arya stark", "arya"] },
                 { id: "sansa", name: "Sansa Stark", aliases: ["sansa stark", "sansa"] },
@@ -317,7 +322,7 @@ html_code = """
                 { id: "ramsay", name: "Ramsay Bolton", aliases: ["ramsay bolton", "ramsay", "ramsey bolton", "ramsey"] },
                 { id: "theon", name: "Theon Greyjoy", aliases: ["theon greyjoy", "theon", "fedor", "reek"] }
             ],
-            "Casa Lannister & Coroa": [
+            "Terras Ocidentais": [
                 { id: "tyrion", name: "Tyrion Lannister", aliases: ["tyrion lannister", "tyrion", "tyron", "tirion"] },
                 { id: "cersei", name: "Cersei Lannister", aliases: ["cersei lannister", "cersei", "cerse"] },
                 { id: "jaime", name: "Jaime Lannister", aliases: ["jaime lannister", "jaime", "jamie lannister", "jamie"] },
@@ -336,7 +341,7 @@ html_code = """
                 { id: "lancel", name: "Lancel Lannister", aliases: ["lancel lannister", "lancel"] },
                 { id: "pycelle", name: "Grand Maester Pycelle", aliases: ["pycelle", "maester pycelle", "grand maester pycelle"] }
             ],
-            "Casa Targaryen & Dragões": [
+            "Terras da Coroa (Targaryen)": [
                 { id: "daenerys", name: "Daenerys Targaryen", aliases: ["daenerys targaryen", "daenerys", "dany", "khaleesi"] },
                 { id: "viserys", name: "Viserys Targaryen", aliases: ["viserys targaryen", "viserys"] },
                 { id: "rhaenyra", name: "Rhaenyra Targaryen", aliases: ["rhaenyra targaryen", "rhaenyra"] },
@@ -370,7 +375,7 @@ html_code = """
                 { id: "lysa", name: "Lysa Arryn", aliases: ["lysa arryn", "lysa"] },
                 { id: "robin", name: "Robin Arryn", aliases: ["robin arryn", "robin", "sweetrobin"] }
             ],
-            "Essos & Aliados Importantes": [
+            "Essos": [
                 { id: "jorah", name: "Jorah Mormont", aliases: ["jorah mormont", "jorah"] },
                 { id: "brienne", name: "Brienne de Tarth", aliases: ["brienne de tarth", "brienne", "briene"] },
                 { id: "samwell", name: "Samwell Tarly", aliases: ["samwell tarly", "samwell", "sam tarly", "sam"] },
@@ -392,7 +397,6 @@ html_code = """
         let foundSet = new Set(JSON.parse(localStorage.getItem('got_quiz_acertos') || '[]'));
         let totalCharacters = 0;
 
-        // Calcular total de personagens
         Object.values(quizData).forEach(group => {
             totalCharacters += group.length;
         });
@@ -401,7 +405,6 @@ html_code = """
         const searchInput = document.getElementById('quizInput');
         const scoreText = document.getElementById('scoreText');
 
-        // Normalização para ignorar acentos e maiúsculas
         function normalizeString(str) {
             return str.toLowerCase()
                       .normalize("NFD")
@@ -409,7 +412,6 @@ html_code = """
                       .trim();
         }
 
-        // Renderizar a grade inicial
         function renderGrid() {
             gridContainer.innerHTML = '';
 
@@ -447,31 +449,25 @@ html_code = """
             scoreText.innerText = `${foundSet.size} / ${totalCharacters} encontrados`;
         }
 
-        // ESCUTA EM TEMPO REAL A CADA LETRA DIGITADA
         searchInput.addEventListener('input', (e) => {
             const typedVal = normalizeString(e.target.value);
             if (!typedVal) return;
 
-            // Percorre todas as casas e personagens
             for (const [house, characters] of Object.entries(quizData)) {
                 for (const char of characters) {
                     if (!foundSet.has(char.id)) {
-                        // Verifica se o texto bate com qualquer um dos apelidos/primeiros nomes
                         const isMatch = char.aliases.some(alias => normalizeString(alias) === typedVal);
                         
                         if (isMatch) {
-                            // ACERTOU!
                             foundSet.add(char.id);
                             localStorage.setItem('got_quiz_acertos', JSON.stringify(Array.from(foundSet)));
                             
-                            // Atualiza a célula instantaneamente na tela
                             const cell = document.getElementById('cell-' + char.id);
                             if (cell) {
                                 cell.className = 'cell cell-found';
                                 cell.innerText = char.name;
                             }
 
-                            // Limpa a caixa de texto de imediato sem apertar Enter!
                             searchInput.value = '';
                             updateScore();
                             return;
@@ -481,16 +477,26 @@ html_code = """
             }
         });
 
+        let isResetting = false;
         function resetGame() {
-            if (confirm("Deseja realmente zerar o jogo?")) {
+            const btn = document.querySelector('.reset-btn');
+            if (!isResetting) {
+                isResetting = true;
+                btn.innerText = "⚠️ Clique para confirmar zerar";
+                setTimeout(() => {
+                    isResetting = false;
+                    btn.innerText = "🔄 Reiniciar e Zerar Quiz";
+                }, 3000);
+            } else {
                 foundSet.clear();
                 localStorage.removeItem('got_quiz_acertos');
                 searchInput.value = '';
+                btn.innerText = "🔄 Reiniciar e Zerar Quiz";
+                isResetting = false;
                 renderGrid();
             }
         }
 
-        // Inicializar a tela
         renderGrid();
     </script>
 </body>
