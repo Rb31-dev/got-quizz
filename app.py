@@ -183,7 +183,7 @@ html_code = """
         /* Layout em grade */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 30px;
         }
@@ -374,23 +374,6 @@ html_code = """
                 { id: "balon", name: "Balon Greyjoy", aliases: ["balon greyjoy", "balon"] },
                 { id: "lysa", name: "Lysa Arryn", aliases: ["lysa arryn", "lysa"] },
                 { id: "robin", name: "Robin Arryn", aliases: ["robin arryn", "robin", "sweetrobin"] }
-            ],
-            "Essos": [
-                { id: "jorah", name: "Jorah Mormont", aliases: ["jorah mormont", "jorah"] },
-                { id: "brienne", name: "Brienne de Tarth", aliases: ["brienne de tarth", "brienne", "briene"] },
-                { id: "samwell", name: "Samwell Tarly", aliases: ["samwell tarly", "samwell", "sam tarly", "sam"] },
-                { id: "davos", name: "Davos Seaworth", aliases: ["davos seaworth", "davos", "cavaleiro das cebolas", "onion knight"] },
-                { id: "melisandre", name: "Melisandre", aliases: ["melisandre", "mulher vermelha", "red woman"] },
-                { id: "barristan", name: "Barristan Selmy", aliases: ["barristan selmy", "barristan", "barristan o ousado"] },
-                { id: "missandei", name: "Missandei", aliases: ["missandei"] },
-                { id: "greyworm", name: "Verme Cinzento", aliases: ["verme cinzento", "grey worm"] },
-                { id: "drogo", name: "Khal Drogo", aliases: ["khal drogo", "drogo"] },
-                { id: "syrio", name: "Syrio Forel", aliases: ["syrio forel", "syrio"] },
-                { id: "jaqen", name: "Jaqen H'ghar", aliases: ["jaqen hghar", "jaqen h'ghar", "jaqen"] },
-                { id: "daario", name: "Daario Naharis", aliases: ["daario naharis", "daario"] },
-                { id: "gendry", name: "Gendry Baratheon", aliases: ["gendry baratheon", "gendry"] },
-                { id: "shae", name: "Shae", aliases: ["shae"] },
-                { id: "gilly", name: "Gilly", aliases: ["gilly"] }
             ]
         };
 
