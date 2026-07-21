@@ -50,7 +50,7 @@ html_code = """
         /* Cabeçalho superior azul com menu */
         .header-container {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 12px 30px;
+            padding: 16px 30px;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -65,15 +65,7 @@ html_code = """
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .header-logo img {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ffd700;
+            gap: 10px;
         }
 
         .header-menu {
@@ -262,7 +254,9 @@ html_code = """
     <!-- Header Azul com a sua Imagem e Nome -->
     <div class="header-container">
         <div class="header-logo">
-            <img src="https://i.postimg.cc/pT3Y3K3m/lovewens.png" alt="Logo Lovewen'S">
+            <!-- Se você colocar a imagem 'logo.png' no seu repositório no GitHub, ela carregará aqui -->
+            <img src="logo.png" alt="Logo Lovewen'S" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline';">
+            <span id="fallback-icon" style="display:none; font-size: 26px;">👑</span>
             <span>Lovewen'S</span>
         </div>
         <div class="header-menu">
@@ -275,15 +269,16 @@ html_code = """
 
     <div class="main-content">
         <h1>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>
-        <p class="subtitle">Quais personagens do universo de GOT você acerta?</p>
+        <p class="subtitle">Digite o nome dos personagens (aceita o primeiro nome ou apelidos como Dany, Jon, Tyrion, Sansa)!</p>
 
         <!-- Input com escuta instantânea -->
         <div class="input-group">
-            <label class="input-label" for="quizInput">Digite o nome de um personagem:</label>
+            <label class="input-label" for="quizInput">Digite o nome de um personagem (sem precisar apertar Enter):</label>
             <input 
                 type="text" 
                 id="quizInput" 
-                class="search-input"  
+                class="search-input" 
+                placeholder="Ex: Jon, Sansa, Tyrion, Dany, Joffrey, Ned..." 
                 autocomplete="off"
                 autofocus
             />
