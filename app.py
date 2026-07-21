@@ -275,8 +275,8 @@ html_code = """
     </div>
 
     <div class="main-content">
-        <h1>⚔️ Quiz de Personagens & Casas: Universo Game of Thrones</h1>
-        <p class="subtitle">Digite o nome dos personagens ou das Casas Nobres (validação automática sem apertar Enter)!</p>
+        <h1>⚔️ Quiz Universo Game of Thrones</h1>
+        <p class="subtitle">O quanto você conhece do universo de GOT?</p>
 
         <div class="input-group">
             <label class="input-label" for="quizInput">Digite um nome:</label>
@@ -284,7 +284,6 @@ html_code = """
                 type="text" 
                 id="quizInput" 
                 class="search-input" 
-                placeholder="Ex: Jon, Sansa, Tyrion, Dany, Stark, Lannister, Baratheon..." 
                 autocomplete="off"
                 autofocus
             />
