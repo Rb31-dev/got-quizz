@@ -272,8 +272,7 @@ html_code = """
             <input 
                 type="text" 
                 id="quizInput" 
-                class="search-input" 
-                placeholder="Ex: Jon, Sansa, Tyrion, Dany, Joffrey, Ned..." 
+                class="search-input"  
                 autocomplete="off"
                 autofocus
             />
