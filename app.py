@@ -495,9 +495,3 @@ html_code = """
 
 components.html(html_code, height=1300, scrolling=True)
 ```
-
-### O que mudou nesta versão:
-1. **Verificação letra por letra em 0ms:** O evento `input` agora checa cada tecla. Assim que você termina de digitar a palavra (ex: `sansa`, `jon`, `tyrion`, `dany`), o jogo reconhece no mesmo segundo.
-2. **Sem Enter:** A caixa é limpa instantaneamente e a céula fica verde na hora sem você precisar tocar no Enter ou no mouse.
-3. **Primeiros Nomes e Erros Comuns:** Aceita *Dany*, *Jon*, *Sansa*, *Ned*, *Tyrion*, *Joffrey*, *Robb*, *Khaleesi*, *Rei Louco*, etc.
-4. **Respostas Salvas:** Se a página recarregar, o progresso fica guardado no navegador para não perder o que você já acertou.
