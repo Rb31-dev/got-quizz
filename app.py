@@ -275,7 +275,7 @@ html_code = """
     </div>
 
     <div class="main-content">
-        <h1>⚔️ Quiz Universo Game of Thrones</h1>
+        <h1>⚔️ O Quiz Definitivo de Game of Thrones</h1>
         <p class="subtitle">O quanto você conhece do universo de GOT?</p>
 
         <div class="input-group">
