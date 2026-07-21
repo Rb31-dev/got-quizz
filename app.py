@@ -50,7 +50,7 @@ html_code = """
         /* Cabeçalho superior azul com menu */
         .header-container {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 16px 30px;
+            padding: 12px 30px;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -65,7 +65,15 @@ html_code = """
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .header-logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffd700;
         }
 
         .header-menu {
@@ -251,10 +259,12 @@ html_code = """
 </head>
 <body>
 
-    <!-- Header Azul -->
+    <!-- Header Azul com a sua Imagem e Nome -->
     <div class="header-container">
-    <img src="blob:https://gemini.google.com/09917564-97ef-471e-8da4-0b5faee0d444" style="height: 35px; vertical-align: middle; margin-right: 8px;">
-        <div class="header-logo">🛡️ Lovewen'S</div>
+        <div class="header-logo">
+            <img src="https://i.postimg.cc/pT3Y3K3m/lovewens.png" alt="Logo Lovewen'S">
+            <span>Lovewen'S</span>
+        </div>
         <div class="header-menu">
             <span class="menu-item">Início</span>
             <span class="menu-item">Mais Quizzes</span>
@@ -265,7 +275,7 @@ html_code = """
 
     <div class="main-content">
         <h1>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>
-        <p class="subtitle">Quais personagens do universo de GOT voce acerta?</p>
+        <p class="subtitle">Quais personagens do universo de GOT você acerta?</p>
 
         <!-- Input com escuta instantânea -->
         <div class="input-group">
