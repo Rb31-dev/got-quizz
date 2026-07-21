@@ -263,7 +263,7 @@ html_code = """
     <div class="header-container">
         <div class="header-logo">
             <img src="logo.png" alt="Logo Lovewen'S" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline';">
-            <span id="fallback-icon" style="display:none; font-size: 26px;">👑</span>
+            <span id="fallback-icon" style="display:none; font-size: 26px;">🎮​</span>
             <span>Lovewen'S</span>
         </div>
         <div class="header-menu">
