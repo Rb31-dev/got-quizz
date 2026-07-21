@@ -268,7 +268,7 @@ html_code = """
 
         <!-- Input com escuta instantânea -->
         <div class="input-group">
-            <label class="input-label" for="quizInput">Digite o nome de um personagem (sem precisar apertar Enter):</label>
+            <label class="input-label" for="quizInput">Digite o nome de um personagem:</label>
             <input 
                 type="text" 
                 id="quizInput" 
