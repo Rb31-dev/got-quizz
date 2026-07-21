@@ -269,16 +269,15 @@ html_code = """
 
     <div class="main-content">
         <h1>⚔️ Quiz de Personagens: Universo de Game of Thrones</h1>
-        <p class="subtitle">Digite o nome dos personagens (aceita o primeiro nome ou apelidos como Dany, Jon, Tyrion, Sansa)!</p>
+        <p class="subtitle">Você conhece todos os personagens do universo de GOT?!</p>
 
         <!-- Input com escuta instantânea -->
         <div class="input-group">
-            <label class="input-label" for="quizInput">Digite o nome de um personagem (sem precisar apertar Enter):</label>
+            <label class="input-label" for="quizInput">Digite o nome de um personagem:</label>
             <input 
                 type="text" 
                 id="quizInput" 
-                class="search-input" 
-                placeholder="Ex: Jon, Sansa, Tyrion, Dany, Joffrey, Ned..." 
+                class="search-input"  
                 autocomplete="off"
                 autofocus
             />
