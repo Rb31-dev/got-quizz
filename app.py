@@ -253,7 +253,8 @@ html_code = """
 
     <!-- Header Azul -->
     <div class="header-container">
-        <div class="header-logo">🛡️ PORTAL QUIZ</div>
+    <img src="blob:https://gemini.google.com/09917564-97ef-471e-8da4-0b5faee0d444" style="height: 35px; vertical-align: middle; margin-right: 8px;">
+        <div class="header-logo">🛡️ Lovewen'S</div>
         <div class="header-menu">
             <span class="menu-item">Início</span>
             <span class="menu-item">Mais Quizzes</span>
