@@ -256,7 +256,7 @@ html_code = """
         <div class="header-logo">
             <!-- Se você colocar a imagem 'logo.png' no seu repositório no GitHub, ela carregará aqui -->
             <img src="logo.png" alt="Logo Lovewen'S" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline';">
-            <span id="fallback-icon" style="display:none; font-size: 26px;">👑</span>
+            <span id="fallback-icon" style="display:none; font-size: 26px;">🎮​</span>
             <span>Lovewen'S</span>
         </div>
         <div class="header-menu">
